@@ -17,9 +17,7 @@ export default class {
         this.callbacks.base = {}
     }
 
-    /**
-     * On
-     */
+    // on
     on(_names: string, callback: (_resource?: any, _data?: any) => any): any {
         const that = this
 
@@ -53,9 +51,6 @@ export default class {
             // Add callback
             that.callbacks[name.namespace][name.value].push(callback)
         })
-
-        console.log(this)
-
         return this
     }
 
@@ -185,7 +180,6 @@ export default class {
                 if (typeof finalResult === "undefined") finalResult = result
             })
         }
-
         return finalResult
     }
 
@@ -197,7 +191,6 @@ export default class {
         names = names.replace(/[^a-zA-Z0-9 ,/.]/g, "")
         names = names.replace(/[,/]+/g, " ")
         names = names.split(" ")
-
         return names
     }
 
@@ -216,7 +209,6 @@ export default class {
         if (parts.length > 1 && parts[1] !== "") {
             newName.namespace = parts[1]
         }
-
         return newName
     }
 }

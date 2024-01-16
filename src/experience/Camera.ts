@@ -27,7 +27,7 @@ export default class Camera {
         this.scene = this.experience.scene
 
         // setup
-        this.mode = "debug"
+        this.mode = "default"
 
         this.setInstance()
         this.setModes()
@@ -62,7 +62,7 @@ export default class Camera {
             this.modes.debug.instance,
             this.targetElement
         )
-        this.modes.debug.orbitControls.enabled = this.modes.debug.active
+        this.modes.debug.orbitControls.enabled = false
         this.modes.debug.orbitControls.screenSpacePanning = true
         this.modes.debug.orbitControls.enableKeys = false
         this.modes.debug.orbitControls.zoomSpeed = 0.25

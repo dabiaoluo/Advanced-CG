@@ -1,5 +1,5 @@
 import * as THREE from "three"
-import GUI from "lil-gui"
+import { Pane } from "tweakpane"
 import Time from "./utils/Time"
 import Sizes from "./utils/Sizes"
 import Stats from "./utils/Stats"
@@ -8,16 +8,19 @@ import Renderer from "./Renderer"
 import Resources from "./Resources"
 import Assets from "./Assets"
 import World from "./World"
+import Navigation from "./Navigation"
 
-interface OptionProps {
+type OptionProps = {
     targetElement: HTMLDivElement
 }
 
-export interface Config {
+export type Config = {
     debug?: boolean
     pixelRatio?: number
     width?: number
     height?: number
+    smallestSide?: number
+    largestSide?: number
 }
 
 export default class Experience {
@@ -29,12 +32,13 @@ export default class Experience {
 
     config?: Config
     stats?: Stats
-    debug?: GUI
+    debug?: any
 
     scene?: THREE.Scene
     renderer: Renderer
 
     resources: Resources
+    navigation: Navigation
     world: World
 
     constructor(_options?: OptionProps) {
@@ -57,12 +61,12 @@ export default class Experience {
 
         this.setConfig()
         this.setDebug()
-        this.setStats()
         this.setScene()
         this.setCamera()
         this.setRenderer()
         this.setResources()
         this.setWorld()
+        this.setNavigation()
 
         this.sizes.on("resize", () => {
             this.resize()
@@ -87,11 +91,22 @@ export default class Experience {
         const boundings = this.targetElement?.getBoundingClientRect()
         this.config.width = boundings?.width
         this.config.height = boundings?.height || window.innerHeight
+        this.config.smallestSide = Math.min(
+            this.config.width,
+            this.config.height
+        )
+        this.config.largestSide = Math.max(
+            this.config.width,
+            this.config.height
+        )
+
+        this.config.debug = this.config.width > 420
     }
 
     setDebug(): void {
         if (this.config?.debug) {
-            this.debug = new GUI()
+            this.debug = new Pane()
+            this.debug.containerElem_.style.width = "320px"
         }
     }
 
@@ -122,11 +137,18 @@ export default class Experience {
         this.world = new World()
     }
 
+    setNavigation(): void {
+        this.navigation = new Navigation()
+    }
+
     update(): void {
-        this.stats?.update()
-        this.camera?.update()
-        this.world?.update()
-        this.renderer?.update()
+        if (this.stats) this.stats.update()
+
+        this.camera.update()
+
+        if (this.world) this.world.update()
+        if (this.renderer) this.renderer.update()
+        if (this.navigation) this.navigation.update()
 
         window.requestAnimationFrame(() => {
             this.update()
@@ -138,6 +160,15 @@ export default class Experience {
         const boundings = this.targetElement.getBoundingClientRect()
         this.config.width = boundings.width
         this.config.height = boundings.height
+
+        this.config.smallestSide = Math.min(
+            this.config.width,
+            this.config.height
+        )
+        this.config.largestSide = Math.max(
+            this.config.width,
+            this.config.height
+        )
 
         this.config.pixelRatio = Math.min(
             Math.max(window.devicePixelRatio, 1),

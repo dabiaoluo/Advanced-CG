@@ -61,7 +61,7 @@ export default class Resources extends EventEmitter {
         this.loader.load(this.groups.current.items)
     }
 
-    createInstancedMeshes(_children, _groups) {
+    createInstancedMeshes(_children: any, _groups: any) {
         // Groups
         const groups = []
 
@@ -76,11 +76,9 @@ export default class Resources extends EventEmitter {
 
         // Result
         const result = {}
-
         for (const _group of groups) {
             result[_group.name] = _group.instancedMeshes
         }
-
         return result
     }
 
