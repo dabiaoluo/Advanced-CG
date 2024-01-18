@@ -34,7 +34,7 @@ pnpm run dev
 ## Team Members and Responsibilities
 - **Xue Zhihan (5123FG23)**: 
 - Project setup, coding, debugging, texture and material adjustments.
-- **Liu Yanqing ()**: 
+- **Liu Yanqing (5123FG45)**: 
 - Model adjustments, modeling, texture baking, frontend development.
 - **Song Xiaodong ()**: 
 - Debugging, testing, frontend design, material collection, presentation preparation.
