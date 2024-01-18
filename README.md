@@ -36,5 +36,5 @@ pnpm run dev
 - Project setup, coding, debugging, texture and material adjustments.
 - **Liu Yanqing (5123FG45)**: 
 - Model adjustments, modeling, texture baking, frontend development.
-- **Song Xiaodong ()**: 
+- **Song Xiaodong (5123FG26)**: 
 - Debugging, testing, frontend design, material collection, presentation preparation.
