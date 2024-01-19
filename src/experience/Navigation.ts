@@ -55,12 +55,6 @@ export default class Navigation {
         this.view.target.limits.y = { min: -0.3, max: 1 }
         this.view.target.limits.z = { min: -0.3, max: 1 }
 
-        // const origin = new THREE.Vector3( 0, 0, 0 );
-        // const length = 1;
-        // const hex = 0xffff00;
-
-        // const arrowHelper = new THREE.ArrowHelper( this.view.target, origin, length, hex );
-        // this.scene.add( arrowHelper );
 
         // drag
         this.view.drag = {}

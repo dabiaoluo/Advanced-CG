@@ -56,10 +56,6 @@ export default class Baked {
         // this.room.bakedNightTexture.encoding = THREE.sRGBEncoding
         this.room.bakedNightTexture.flipY = false
 
-        // this.model.bakedNeutralTexture = this.resources.items.bakedNeutralTexture
-        // this.model.bakedNeutralTexture.encoding = THREE.sRGBEncoding
-        // this.model.bakedNeutralTexture.flipY = false
-
         this.room.lightMapTexture = this.resources.items.lightMapTexture
         this.room.lightMapTexture.flipY = false
 
