@@ -27,7 +27,7 @@ export default class Baked {
         // Debug
         if (this.debug) {
             this.debugFolder = this.debug.addFolder({
-                title: "Settings",
+                title: "Effect Settings",
                 expanded: true,
             })
         }

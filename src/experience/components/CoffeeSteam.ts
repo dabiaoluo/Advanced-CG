@@ -27,7 +27,7 @@ export default class CoffeeSteam {
         // Debug
         if (this.debug) {
             this.debugFolder = this.debug.addFolder({
-                title: "Coffee steam",
+                title: "Cup steam",
                 expanded: false,
             })
         }
